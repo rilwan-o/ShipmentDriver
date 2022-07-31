@@ -1,0 +1,56 @@
+﻿@model ShipmentDriver.Web.Models.Driver
+
+@{
+    var statusList = ViewBag.status;
+}
+<form method="post" asp-controller="Driver" asp-action="Delete">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Delete Driver</h2>
+            <hr/>
+        </div>
+        <input asp-for="Id" hidden class="form-control" />
+    <div class="mb-3">
+        <label asp-for="FirstName">First Name</label>
+        <input asp-for="FirstName" disabled class="form-control" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+     <div class="mb-3">
+        <label asp-for="LastName">Last Name</label>
+        <input asp-for="LastName" disabled class="form-control" />
+         <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+     <div class="mb-3">
+        <label asp-for="VehiclePlate"></label>
+        <input asp-for="VehiclePlate" disabled class="form-control" />
+        <span asp-validation-for="VehiclePlate" class="text-danger"></span>
+    </div>
+     <div class="mb-3">
+        <label asp-for="ExpirationDate"></label>
+        <input asp-for="ExpirationDate" disabled class="form-control" />
+        <span asp-validation-for="ExpirationDate" class="text-danger"></span>
+    </div>
+     <div class="mb-3">
+        <label asp-for="StartDate"></label>
+        <input asp-for="StartDate" disabled class="form-control" />
+        <span asp-validation-for="StartDate" class="text-danger"></span>
+    </div>
+     <div class="mb-3">
+        <label asp-for="Active"></label>
+        <input asp-for="Active" disabled class="form-control" />
+        <span asp-validation-for="Active" class="text-danger"></span>
+    </div>
+    
+    <button type="submit" class="btn btn-primary" style="width:150px">Remove</button>
+    <a asp-controller="Driver" asp-action="Index" class="btn btn-secondary" style="width:150px">
+        Back to List
+    </a>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+    <partial name="_ValidationScriptsPartial" />
+
+    }
+}

@@ -1,0 +1,52 @@
+﻿@model List<ShipmentDriver.Web.ViewModels.DriverViewModel>;
+
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Drivers</h2>
+        </div>
+        <div class="col-6">
+            <a asp-controller="Driver" asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> &nbsp; Add New Driver
+            </a>
+        </div>
+     </div>
+        <br/><br/>
+<table class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>vehiclePlate</th>
+            <th>startDate</th>
+            <th>expirationDate</th>            
+            <th>active</th>          
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td width="25%">@item.firstName</td>
+                <td width="25%">@item.lastName</td>
+                <td width="5%">@item.vehiclePlate</td>
+                <td width="25%">@item.startDate</td>
+                <td width="25%">@item.expirationDate</td>               
+                <td width="25%">@item.active</td>
+                <td width="25%" >
+                    <a asp-controller="Driver" asp-action="Edit" asp-route-id="@item.id"><i class="bi bi-pencil-square"></i></a>
+                </td>
+                <td width="25%">
+                    <a asp-controller="Driver" asp-action="Delete" asp-route-id="@item.id"><i class="bi bi-trash3"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+
+</table>
+
+</div>

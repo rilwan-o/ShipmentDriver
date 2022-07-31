@@ -1,0 +1,73 @@
+﻿@model ShipmentDriver.Web.Models.Shipment
+
+@{
+    var drivers = ViewBag.dri;
+}
+
+<form method="post" asp-controller="Shipment" asp-action="Edit">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Edit Shipment</h2>
+            <hr/>
+        </div>
+         <input asp-for="Id" hidden class="form-control" />
+         <input asp-for="CreatedAt" hidden class="form-control" />
+    <div class="mb-3">
+        <label asp-for="Origin"></label>
+        <input asp-for="Origin" class="form-control" />
+        <span asp-validation-for="Origin" class="text-danger"></span>
+    </div>
+     <div class="mb-3">
+        <label asp-for="Destination"></label>
+        <input asp-for="Destination" class="form-control" />
+         <span asp-validation-for="Destination" class="text-danger"></span>
+
+    </div>
+     <div class="mb-3">
+        <label asp-for="Comments"></label>
+        <input asp-for="Comments" class="form-control" />
+    </div>
+     <div class="mb-3">
+        <label asp-for="ShipmentDate"></label>
+        <input asp-for="ShipmentDate" class="form-control" />
+        <span asp-validation-for="ShipmentDate" class="text-danger"></span>
+    </div>
+     <div class="mb-3">
+        <label asp-for="PlannedDate"></label>
+        <input asp-for="PlannedDate" class="form-control" />
+        <span asp-validation-for="PlannedDate" class="text-danger"></span>
+    </div>
+     <div class="mb-3">
+        <label asp-for="EffectiveDate"></label>
+        <input asp-for="EffectiveDate" class="form-control" />
+        <span asp-validation-for="EffectiveDate" class="text-danger"></span>
+    </div>
+     <div class="mb-3">
+        <label asp-for="CreatedBy"></label>
+        <input asp-for="CreatedBy" class="form-control" />
+    </div>
+     <div class="mb-3">
+        <label asp-for="DriverId">Driver</label>
+         <select id="driverId" class="form-control" data-toggle="tooltip" name="DriverId"
+         data-trigger="hover" data-placement="top" data-title="DriverId">
+         @if(drivers !=null){
+                    @foreach (var driver in drivers)
+                    {
+                        <option value="@driver.id">@driver.firstName @driver.lastName</option>
+                    }
+         }
+         </select>
+     </div>
+    <button type="submit" class="btn btn-primary" style="width:150px">Update</button>
+    <a asp-controller="Shipment" asp-action="Index" class="btn btn-secondary" style="width:150px">
+        Back to List
+    </a>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+    <partial name="_ValidationScriptsPartial" />
+
+    }
+}
